@@ -107,10 +107,12 @@ export class ButterchurnVisualizer extends BaseVisualizer {
         baseValOverrides[key] = value
       } else if ((tier === 'medium' || tier === 'hard') && param?.replace && param?.target) {
         const formatted = formatValue(value, param.step)
+        // GLSL has no implicit int→float conversion — shader literals need a decimal point
+        const glsl = formatted.includes('.') ? formatted : formatted + '.0'
         if      (param.target === 'frame_eqs_str') frameEqs = frameEqs.replaceAll(param.replace, formatted)
         else if (param.target === 'pixel_eqs_str') pixelEqs = pixelEqs.replaceAll(param.replace, formatted)
-        else if (param.target === 'warp')          warpStr  = warpStr.replaceAll(param.replace, formatted)
-        else if (param.target === 'comp')          compStr  = compStr.replaceAll(param.replace, formatted)
+        else if (param.target === 'warp')          warpStr  = warpStr.replaceAll(param.replace, glsl)
+        else if (param.target === 'comp')          compStr  = compStr.replaceAll(param.replace, glsl)
       }
     }
 

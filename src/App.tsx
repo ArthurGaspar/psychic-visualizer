@@ -330,6 +330,10 @@ export default function App() {
               setMilkdropConfigs(prev => ({ ...prev, [milkdropPresetIndex]: next }))
               vizCanvasRef.current?.applyMilkdropConfig(next)
             }}
+            onMilkdropConfigSet={(values) => {
+              setMilkdropConfigs(prev => ({ ...prev, [milkdropPresetIndex]: values }))
+              vizCanvasRef.current?.applyMilkdropConfig(values)
+            }}
             onSave={() => setShowSave(true)}
             onClose={() => setShowControls(false)}
           />

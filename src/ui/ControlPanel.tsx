@@ -17,6 +17,7 @@ interface Props {
   onConfigChange: (config: UserConfig) => void
   onSelectMilkdropPreset: (index: number) => void
   onMilkdropConfigChange: (key: string, value: number) => void
+  onMilkdropConfigSet: (values: PresetConfigOverrides) => void
   onSave: () => void
   onClose: () => void
 }
@@ -33,7 +34,7 @@ export function ControlPanel({
   activeId, seed, config, currentMilkdropPresetIndex,
   milkdropConfigValues,
   onVisualizerChange, onSeedChange, onConfigChange,
-  onSelectMilkdropPreset, onMilkdropConfigChange,
+  onSelectMilkdropPreset, onMilkdropConfigChange, onMilkdropConfigSet,
   onSave, onClose,
 }: Props) {
   const [tab, setTab] = useState<Tab>('controls')
@@ -148,6 +149,16 @@ export function ControlPanel({
             const mediumEntries = entries.filter(([, p]) => p.tier === 'medium')
             const hardEntries   = entries.filter(([, p]) => p.tier === 'hard')
 
+            const randomize = () => {
+              const values: PresetConfigOverrides = {}
+              for (const [key, p] of entries) {
+                const steps = Math.round((p.max - p.min) / p.step)
+                const v = p.min + Math.floor(Math.random() * (steps + 1)) * p.step
+                values[key] = Number(v.toFixed(decimals(p.step)))
+              }
+              onMilkdropConfigSet(values)
+            }
+
             const renderParam = (key: string, param: typeof presetConfigSchema[string]) => {
               const value = milkdropConfigValues[key] ?? param.default
               const dec   = decimals(param.step)
@@ -184,6 +195,16 @@ export function ControlPanel({
 
             return (
               <div className="flex-1 overflow-y-auto border-t border-zinc-800 p-3 space-y-3 min-h-0">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Preset Config</p>
+                  <button
+                    onClick={randomize}
+                    className="px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 text-sm transition-colors border border-zinc-700 leading-none"
+                    title="Randomize all values"
+                  >
+                    🎲
+                  </button>
+                </div>
                 {easyEntries.length > 0 && (
                   <>
                     <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Base Config</p>

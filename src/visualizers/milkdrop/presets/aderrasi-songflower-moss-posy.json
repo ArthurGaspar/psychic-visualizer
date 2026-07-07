@@ -82,5 +82,37 @@
     "pixel_eqs_str": "a.thresh=2*above(a.bass_att,a.thresh)+(1-above(a.bass_att,a.thresh))*(.96*(a.thresh-1.3)+1.3);a.dx_r=.015*equal(a.thresh,2)*Math.sin(5*a.time)+(1-equal(a.thresh,2))*a.dx_r;a.dy_r=.015*equal(a.thresh,2)*Math.sin(6*a.time)+(1-equal(a.thresh,2))*a.dy_r;a.ladder=Math.abs(Math.sin(1*a.time));a.leaf=5*below(a.ladder,.2)+8*above(a.ladder,.2)*below(a.ladder,.4)+12*above(a.ladder,.4)*below(a.ladder,.6)+18*above(a.ladder,.6)*below(a.ladder,.8)+24*above(a.ladder,.8);a.leafset=.00001<Math.abs(equal(a.thresh,\n2))?a.leaf:a.leafset;a.zoom+=.05*(.75-Math.cos(a.leafset*a.rad))*(1-a.rad);a.zoom-=Math.abs(.05*(.75-Math.cos(4*a.rad)));",
     "warp": "",
     "comp": ""
+  },
+  "config": {
+    "decay":      { "min": 0.0, "max": 1.0,  "default": 1.0,      "step": 0.001,  "tier": "easy" },
+    "gammaadj":   { "min": 0.0, "max": 4.0,  "default": 1.0,      "step": 0.05,   "tier": "easy" },
+    "zoom":       { "min": 0.0, "max": 1.02, "default": 1.0,      "step": 0.0005, "tier": "easy" },
+    "echo_zoom":  { "min": 0.0, "max": 2.0,  "default": 1.0,      "step": 0.001,  "tier": "easy" },
+    "echo_alpha": { "min": 0.0, "max": 2.0,  "default": 1.0,      "step": 0.01,   "tier": "easy" },
+    "wave_a":     { "min": 0.0, "max": 0.1,  "default": 0.001,    "step": 0.0001, "tier": "easy" },
+    "wave_scale": { "min": 0.0, "max": 3.0,  "default": 1.447722, "step": 0.005,  "tier": "easy" },
+    "wave_mode":  { "min": 0,   "max": 7,    "default": 5,        "step": 1,      "tier": "easy", "type": "select" },
+    "ob_size":    { "min": 0.0, "max": 0.05, "default": 0.015,    "step": 0.001,  "tier": "easy" },
+    "ob_a":       { "min": 0.0, "max": 1.0,  "default": 1.0,      "step": 0.01,   "tier": "easy" },
+    "ib_a":       { "min": 0.0, "max": 1.0,  "default": 1.0,      "step": 0.01,   "tier": "easy" },
+
+    "wave_r_freq":       { "min": 0.0, "max": 8.0,   "default": 1.6,   "step": 0.01,   "tier": "medium", "target": "frame_eqs_str", "replace": "1.6" },
+    "wave_g_freq":       { "min": 0.0, "max": 8.0,   "default": 4.1,   "step": 0.01,   "tier": "medium", "target": "frame_eqs_str", "replace": "4.1" },
+    "pf_thresh_decay":   { "min": 0.0, "max": 1.0,   "default": 0.96,  "step": 0.001,  "tier": "medium", "target": "frame_eqs_str", "replace": ".96" },
+    "pf_thresh_base":    { "min": 0.0, "max": 3.0,   "default": 1.3,   "step": 0.01,   "tier": "medium", "target": "frame_eqs_str", "replace": "1.3" },
+    "pf_wobble_amp":     { "min": 0.0, "max": 0.1,   "default": 0.015, "step": 0.001,  "tier": "medium", "target": "frame_eqs_str", "replace": ".015" },
+    "echo_zoom_react":   { "min": 0,   "max": 200,   "default": 50,    "step": 1,      "tier": "medium", "target": "frame_eqs_str", "replace": "50" },
+    "echo_orient_react": { "min": 0,   "max": 64,    "default": 16,    "step": 1,      "tier": "medium", "target": "frame_eqs_str", "replace": "16" },
+    "drift_amount":      { "min": 0.0, "max": 60.0,  "default": 15.1,  "step": 0.1,    "tier": "medium", "target": "frame_eqs_str", "replace": "15.1" },
+    "ob_size_pulse":     { "min": 0.0, "max": 0.02,  "default": 0.005, "step": 0.0005, "tier": "medium", "target": "frame_eqs_str", "replace": ".005" },
+
+    "thresh_decay":   { "min": 0.0, "max": 1.0,  "default": 0.96,  "step": 0.001, "tier": "medium", "target": "pixel_eqs_str", "replace": ".96" },
+    "thresh_base":    { "min": 0.0, "max": 3.0,  "default": 1.3,   "step": 0.01,  "tier": "medium", "target": "pixel_eqs_str", "replace": "1.3" },
+    "wobble_amp":     { "min": 0.0, "max": 0.1,  "default": 0.015, "step": 0.001, "tier": "medium", "target": "pixel_eqs_str", "replace": ".015" },
+    "leaf_count_a":   { "min": 0,   "max": 40,   "default": 12,    "step": 1,     "tier": "medium", "target": "pixel_eqs_str", "replace": "12" },
+    "leaf_count_b":   { "min": 0,   "max": 40,   "default": 18,    "step": 1,     "tier": "medium", "target": "pixel_eqs_str", "replace": "18" },
+    "leaf_count_c":   { "min": 0,   "max": 40,   "default": 24,    "step": 1,     "tier": "medium", "target": "pixel_eqs_str", "replace": "24" },
+    "petal_zoom_amp": { "min": 0.0, "max": 0.2,  "default": 0.05,  "step": 0.001, "tier": "medium", "target": "pixel_eqs_str", "replace": ".05" },
+    "petal_shape":    { "min": 0.0, "max": 2.0,  "default": 0.75,  "step": 0.01,  "tier": "medium", "target": "pixel_eqs_str", "replace": ".75" }
   }
 }
