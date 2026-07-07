@@ -1,3 +1,11 @@
+# ⚠️ EPILEPSY WARNING ⚠️
+
+This project contains rapidly flashing lights, intense color patterns, and fast visual transitions.  
+It may trigger seizures in individuals with photosensitive epilepsy.  
+Viewer discretion is strongly advised.
+
+---
+
 A browser-based music visualizer. Drop in an audio file and watch it come alive.
 
 ---
