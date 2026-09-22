@@ -103,11 +103,11 @@ Raw WebGL fragment shaders. Highest visual impact, hardest to configure.
 
 ---
 
-## Config schema (Phase 1 — baseVals only)
+## Config schema
 
 The `config` field defines which parameters to expose as UI sliders or selects.
-Currently only `baseVals` parameters are supported. Medium (equation constants) and
-hard (GLSL) tiers are planned for later phases.
+All three tiers are supported: `easy` changes `baseVals`, `medium` patches equation
+strings, and `hard` patches GLSL shaders. See the tier descriptions below.
 
 ```json
 "config": {
@@ -138,6 +138,9 @@ hard (GLSL) tiers are planned for later phases.
 | `default` | yes | Initial value (should match the preset's actual `baseVals` value) |
 | `step` | yes | Slider increment |
 | `type` | no | `"slider"` (default) or `"select"` |
+| `tier` | no | `"easy"` (default), `"medium"`, or `"hard"` |
+| `target` | medium/hard | `frame_eqs_str` / `pixel_eqs_str` for medium; `warp` / `comp` for hard |
+| `replace` | medium/hard | Exact numeric literal text to replace in the target string |
 
 ---
 
@@ -146,7 +149,8 @@ hard (GLSL) tiers are planned for later phases.
 ### Easy — direct `baseVals` override
 Change a float in `baseVals` before calling `butterchurn.loadPreset()`. Any `baseVals`
 key that is *not* overridden by `frame_eqs_str` will stick for the whole session.
-Keys that *are* overridden by equations act as a bias/offset.
+An additive equation (`+=`) uses the base value as a bias. A direct assignment
+(`=`) replaces it entirely; do not expose such a key as an easy control.
 
 ### Medium — equation string constant patching
 Replace numeric literals inside `frame_eqs_str` or `pixel_eqs_str` strings.
@@ -157,3 +161,31 @@ user-supplied multiplier before loading the preset.
 Replace numeric literals or add uniform variables inside the `warp` or `comp` GLSL
 strings. Requires careful string surgery or a templating approach. Gives access to
 blur radius, feedback strength, per-channel gamma, etc.
+
+### Authoring checks
+
+The current renderer uses literal `replaceAll`, not a numeric-token parser. Check
+every occurrence: `0.02` also matches the start of `0.025`, for example. Whitespace
+can help scope a literal when the original source contains it; several configs in
+the Flexi batch deliberately include it in `replace`. Avoid constants whose
+matches change unrelated operations or only some components of a color vector.
+Replacements run sequentially, so also consider interactions between overrides.
+
+Easy defaults use the stored base value or Butterchurn's fallback when omitted
+(for example, border opacity defaults to zero). Other defaults must equal the original numeric values and retain sufficient precision
+for the renderer's step-based formatting. Keep divisor minima above zero and
+leave buffer indices, loop bounds, and structural shader constants alone.
+Nested shape/wave equations and initialization equations are not supported targets.
+
+## Alphabetical configuration progress
+
+Configs are present through `flexi-area-51.json` in filename order. The latest
+batch adds 84 controls across these five presets:
+
+- `flexi-alien-fish-pond.json`
+- `flexi-amandio-c-organic-random-mashup.json`
+- `flexi-amandio-c-organic12-3d-2-milk.json`
+- `flexi-amandio-c-piercing-05-kopie-2-kopie.json`
+- `flexi-area-51.json`
+
+Continue with `flexi-bouncing-balls-double-mindblob-neon-mix.json` next.

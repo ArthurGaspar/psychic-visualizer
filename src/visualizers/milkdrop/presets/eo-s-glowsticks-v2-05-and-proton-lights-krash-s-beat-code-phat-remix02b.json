@@ -112,5 +112,32 @@
     "pixel_eqs_str": "a[\"var\"]=Math.tan(a.time)*a.treb*a.treb;a.zoom=1+div(a.rad,40)+div(a[\"var\"],40);",
     "warp": "",
     "comp": ""
+  },
+  "config": {
+    "gammaadj":      { "min": 0.0, "max": 4.0,  "default": 1.21,     "step": 0.05,   "tier": "easy" },
+    "echo_zoom":     { "min": 0.0, "max": 2.0,  "default": 0.99663,  "step": 0.0001, "tier": "easy" },
+    "echo_orient":   { "min": 0,   "max": 3,    "default": 1,        "step": 1,      "tier": "easy", "type": "select" },
+    "wave_mode":     { "min": 0,   "max": 7,    "default": 2,        "step": 1,      "tier": "easy", "type": "select" },
+    "wave_a":        { "min": 0.0, "max": 0.1,  "default": 0.001,    "step": 0.0005, "tier": "easy" },
+    "wave_scale":    { "min": 0.0, "max": 3.0,  "default": 0.011726, "step": 0.001,  "tier": "easy" },
+    "warpanimspeed": { "min": 0.0, "max": 5.0,  "default": 0.037492, "step": 0.001,  "tier": "easy" },
+    "warpscale":     { "min": 0.0, "max": 10.0, "default": 0.014889, "step": 0.001,  "tier": "easy" },
+    "ob_size":       { "min": 0.0, "max": 0.1,  "default": 0.055,    "step": 0.001,  "tier": "easy" },
+    "ob_a":          { "min": 0.0, "max": 1.0,  "default": 1.0,      "step": 0.01,   "tier": "easy" },
+
+    "vol_weight_1":    { "min": 0.0, "max": 2.0,   "default": 0.3,   "step": 0.01,  "tier": "medium", "target": "frame_eqs_str", "replace": ".3" },
+    "quiet_thresh":    { "min": 0.0, "max": 0.5,   "default": 0.01,  "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": ".01" },
+    "peak_decay_slow": { "min": 0.0, "max": 1.0,   "default": 0.95,  "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": ".95" },
+    "peak_decay_fast": { "min": 0.0, "max": 1.0,   "default": 0.995, "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": ".995" },
+    "mean_boost":      { "min": 0.0, "max": 3.0,   "default": 1.1,   "step": 0.01,  "tier": "medium", "target": "frame_eqs_str", "replace": "1.1" },
+    "beat_vol_thresh": { "min": 0.0, "max": 3.0,   "default": 0.8,   "step": 0.01,  "tier": "medium", "target": "frame_eqs_str", "replace": ".8" },
+    "beat_sharpness":  { "min": 0.0, "max": 0.5,   "default": 0.05,  "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": ".05" },
+    "cooldown_scale":  { "min": 0.0, "max": 2.0,   "default": 0.5,   "step": 0.01,  "tier": "medium", "target": "frame_eqs_str", "replace": ".5" },
+    "playback_zoom":   { "min": 0.0, "max": 1.5,   "default": 1.002, "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": "1.002" },
+    "vol_weight_2":    { "min": 0.0, "max": 2.0,   "default": 0.25,  "step": 0.01,  "tier": "medium", "target": "frame_eqs_str", "replace": ".25" },
+    "mtime_q1_scale":  { "min": 0.0, "max": 2.0,   "default": 0.4,   "step": 0.01,  "tier": "medium", "target": "frame_eqs_str", "replace": ".4" },
+    "fps_ref":         { "min": 0,   "max": 120,   "default": 55,    "step": 1,     "tier": "medium", "target": "frame_eqs_str", "replace": "55" },
+
+    "zoom_radial_scale": { "min": 0, "max": 200, "default": 40, "step": 1, "tier": "medium", "target": "pixel_eqs_str", "replace": "40" }
   }
 }

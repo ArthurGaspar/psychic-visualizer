@@ -119,5 +119,23 @@
     "pixel_eqs": "",
     "warp": "",
     "comp": ""
+  },
+  "config": {
+    "echo_zoom":     { "min": 0.0, "max": 2.0,  "default": 1.006596, "step": 0.0001, "tier": "easy" },
+    "echo_orient":   { "min": 0,   "max": 3,    "default": 1,        "step": 1,      "tier": "easy", "type": "select" },
+    "wave_mode":     { "min": 0,   "max": 7,    "default": 2,        "step": 1,      "tier": "easy", "type": "select" },
+    "wave_a":        { "min": 0.0, "max": 0.5,  "default": 0.019788, "step": 0.001,  "tier": "easy" },
+    "wave_scale":    { "min": 0.0, "max": 3.0,  "default": 0.011726, "step": 0.001,  "tier": "easy" },
+    "warpanimspeed": { "min": 0.0, "max": 5.0,  "default": 0.010284, "step": 0.001,  "tier": "easy" },
+    "warpscale":     { "min": 0.0, "max": 10.0, "default": 0.01,     "step": 0.001,  "tier": "easy" },
+    "warp":          { "min": 0.0, "max": 1.0,  "default": 0.01,     "step": 0.001,  "tier": "easy" },
+    "wave_r":        { "min": 0.0, "max": 1.0,  "default": 0.5,      "step": 0.01,   "tier": "easy" },
+    "wave_g":        { "min": 0.0, "max": 1.0,  "default": 0.4,      "step": 0.01,   "tier": "easy" },
+    "wave_b":        { "min": 0.0, "max": 1.0,  "default": 0.3,      "step": 0.01,   "tier": "easy" },
+    "ib_size":       { "min": 0.0, "max": 0.05, "default": 0.005,    "step": 0.001,  "tier": "easy" },
+    "ib_a":          { "min": 0.0, "max": 1.0,  "default": 1.0,      "step": 0.01,   "tier": "easy" },
+
+    "speed":       { "min": 0.0, "max": 1.0, "default": 0.8, "step": 0.01, "tier": "medium", "target": "frame_eqs_str", "replace": ".8" },
+    "flux_center": { "min": 0.0, "max": 2.0, "default": 0.5, "step": 0.01, "tier": "medium", "target": "frame_eqs_str", "replace": ".5" }
   }
 }

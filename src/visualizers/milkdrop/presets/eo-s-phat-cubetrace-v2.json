@@ -147,5 +147,25 @@
     "pixel_eqs": "",
     "warp": "",
     "comp": ""
+  },
+  "config": {
+    "gammaadj":      { "min": 0.0, "max": 4.0,  "default": 1.0,      "step": 0.05,   "tier": "easy" },
+    "echo_zoom":     { "min": 0.0, "max": 2.0,  "default": 0.99663,  "step": 0.0001, "tier": "easy" },
+    "echo_orient":   { "min": 0,   "max": 3,    "default": 1,        "step": 1,      "tier": "easy", "type": "select" },
+    "wave_mode":     { "min": 0,   "max": 7,    "default": 2,        "step": 1,      "tier": "easy", "type": "select" },
+    "wave_a":        { "min": 0.0, "max": 0.1,  "default": 0.001,    "step": 0.0005, "tier": "easy" },
+    "wave_scale":    { "min": 0.0, "max": 3.0,  "default": 0.011726, "step": 0.001,  "tier": "easy" },
+    "warpanimspeed": { "min": 0.0, "max": 5.0,  "default": 0.010284, "step": 0.001,  "tier": "easy" },
+    "warpscale":     { "min": 0.0, "max": 10.0, "default": 0.01,     "step": 0.001,  "tier": "easy" },
+    "wave_r":        { "min": 0.0, "max": 1.0,  "default": 0.5,      "step": 0.01,   "tier": "easy" },
+    "wave_g":        { "min": 0.0, "max": 1.0,  "default": 0.4,      "step": 0.01,   "tier": "easy" },
+    "wave_b":        { "min": 0.0, "max": 1.0,  "default": 0.3,      "step": 0.01,   "tier": "easy" },
+
+    "playback_decay": { "min": 0.0, "max": 1.0,  "default": 0.95,  "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": ".95" },
+    "playback_zoom":  { "min": 0.0, "max": 1.5,  "default": 1.005, "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": "1.005" },
+    "vol_weight":     { "min": 0.0, "max": 2.0,  "default": 0.25,  "step": 0.01,  "tier": "medium", "target": "frame_eqs_str", "replace": ".25" },
+    "mtime_speed":    { "min": 0.0, "max": 0.5,  "default": 0.01,  "step": 0.001, "tier": "medium", "target": "frame_eqs_str", "replace": ".01" },
+    "fps_ref":        { "min": 0,   "max": 240,  "default": 75,    "step": 1,     "tier": "medium", "target": "frame_eqs_str", "replace": "75" },
+    "max_cubesize":   { "min": 0,   "max": 40,   "default": 10,    "step": 1,     "tier": "medium", "target": "frame_eqs_str", "replace": "10" }
   }
 }
